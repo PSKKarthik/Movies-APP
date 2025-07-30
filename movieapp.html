@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Movie Explorer</title>
+  <link rel="stylesheet" href="movieapp.css" />
+</head>
+<body>
+  <div id="spline-container">
+    <spline-viewer loading-anim-type="spinner" url="https://prod.spline.design/r2T6pS-s3dYBDlhz/scene.splinecode"></spline-viewer>
+  </div>
+
+  <div id="page-content">
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header>
+      <h1 id="site-title" tabindex="0" role="button" aria-label="Go to homepage" style="cursor:pointer; user-select:none;">
+        Movie Explorer
+      </h1>
+      <form id="form" autocomplete="off">
+        <input type="text" id="search" class="search" placeholder="Search movies..." aria-label="Search movies" />
+        <div id="search-suggestions" class="suggestions" role="listbox"></div>
+      </form>
+      <button type="button" id="reload-btn" aria-label="Reload animations">🔄</button>
+      <button type="button" id="dark-mode-toggle" aria-label="Toggle dark/light mode">🌙/☀️</button>
+      <button type="button" id="language-toggle" aria-label="Switch language">🌐 Language</button>
+      <button type="button" id="login-btn">Login</button>
+      <button type="button" id="logout-btn" style="display:none;">Logout</button>
+      <button type="button" id="profile-btn" style="display:none;">Profile</button>
+    </header>
+    <nav>
+      <div class="controls">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select" aria-label="Sort movies">
+          <option value="popularity.desc">Popularity</option>
+          <option value="title.asc">Title</option>
+          <option value="vote_average.desc">Rating</option>
+          <option value="release_date.desc">Release date</option>
+        </select>
+        <label for="genre-select">Genre:</label>
+        <select id="genre-select" aria-label="Filter by genre">
+          <option value="">All</option>
+        </select>
+        <label for="year-select">Year:</label>
+        <select id="year-select" aria-label="Filter by year"></select>
+        <label for="lang-select">Language:</label>
+        <select id="lang-select" aria-label="Filter by language"></select>
+        <label for="rating-select">Min. Rating:</label>
+        <select id="rating-select" aria-label="Filter by minimum rating">
+          <option value="">All</option>
+          <option value="9">9+</option>
+          <option value="8">8+</option>
+          <option value="7">7+</option>
+          <option value="6">6+</option>
+        </select>
+        <button type="button" id="reset-filters-btn">Reset Filters</button>
+      </div>
+      <div class="lists">
+        <button type="button" id="favorites-btn">Favorites</button>
+        <button type="button" id="watchlist-btn">Watchlist</button>
+      </div>
+    </nav>
+    <main id="main" tabindex="-1" aria-live="polite"></main>
+
+    <div id="auth-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-content" role="document">
+        <button type="button" class="close-btn" id="close-auth" aria-label="Close authentication modal">×</button>
+        <div id="auth-forms"></div>
+      </div>
+    </div>
+
+    <div id="popup" class="popup" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="popup-content" role="document">
+        <button type="button" class="close-btn" id="close-popup" aria-label="Close movie details">×</button>
+        <h2 id="popup-title"></h2>
+        <div id="popup-video"></div>
+        <div id="popup-details"></div>
+        <div id="popup-reviews"></div>
+        <div id="popup-share"></div>
+        <div id="popup-related"></div>
+      </div>
+    </div>
+
+    <div id="loader" class="loader" style="display:none;" aria-live="assertive" aria-label="Loading"></div>
+
+    <footer>
+      <p>© 2025 Movie Explorer. All rights reserved.</p>
+      <p>Contact: <a href="mailto:support@movieexplorer.com">support@movieexplorer.com</a></p>
+      <p><a href="#" target="_blank" rel="noopener noreferrer">Privacy Policy</a></p>
+    </footer>
+  </div>
+
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.94/build/spline-viewer.js"></script>
+  <script src="movieapp.js"></script>
+</body>
+</html>
